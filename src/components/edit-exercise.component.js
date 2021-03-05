@@ -100,9 +100,9 @@ export default class EditExercise extends Component {
   render() {
     return (
       <div className="container">
-        <h3>Edit Exercise Log</h3>
+        <h3 className="col-lg-6 col-sm-12">Edit Exercise Log</h3>
         <form onSubmit={this.onSubmit}>
-          <div className="form-group">
+          <div className="form-group col-lg-6 col-sm-12">
             <label>Username: </label>
             <select
               ref="userInput"
@@ -120,7 +120,7 @@ export default class EditExercise extends Component {
               })}
             </select>
           </div>
-          <div className="form-group">
+          <div className="form-group col-lg-6 col-sm-12">
             <label>Description: </label>
             <input
               type="text"
@@ -130,7 +130,7 @@ export default class EditExercise extends Component {
               onChange={this.onChangeDescription}
             />
           </div>
-          <div className="form-group">
+          <div className="form-group col-lg-6 col-sm-12">
             <label>Duration (in minutes): </label>
             <input
               type="text"
@@ -139,7 +139,7 @@ export default class EditExercise extends Component {
               onChange={this.onChangeDuration}
             />
           </div>
-          <div className="form-group">
+          <div className="form-group col-lg-6 col-sm-12">
             <label>Date: </label>
             <div>
               <DatePicker
@@ -149,7 +149,7 @@ export default class EditExercise extends Component {
             </div>
           </div>
 
-          <div className="form-group">
+          <div className="form-group col-lg-6 col-sm-12">
             <input
               type="submit"
               value="Edit Exercise Log"
