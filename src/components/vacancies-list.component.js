@@ -2,21 +2,21 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
-const Exercise = (props) => (
+const Vacancy = (props) => (
   <tr>
-    <td>{props.exercise.username}</td>
-    <td>{props.exercise.description}</td>
-    <td>{props.exercise.duration}</td>
-    <td>{props.exercise.date.substring(0, 10)}</td>
+    <td>{props.vacancy.username}</td>
+    <td>{props.vacancy.description}</td>
+    <td>{props.vacancy.duration}</td>
+    <td>{props.vacancy.date.substring(0, 10)}</td>
     <td>
-      <Link to={"/edit/" + props.exercise._id}>
+      <Link to={"/edit/" + props.vacancy._id}>
         <button className="btn btn-warning btn-sm">edit</button>
       </Link>{" "}
       <button
         className="btn btn-danger btn-sm"
         href="#"
         onClick={() => {
-          props.deleteExercise(props.exercise._id);
+          props.deleteVacancy(props.vacancy._id);
         }}
       >
         delete
@@ -25,43 +25,43 @@ const Exercise = (props) => (
   </tr>
 );
 
-export default class ExercisesList extends Component {
+export default class VacanciesList extends Component {
   constructor(props) {
     super(props);
 
-    this.deleteExercise = this.deleteExercise.bind(this);
+    this.deleteVacancy = this.deleteVacancy.bind(this);
 
-    this.state = { exercises: [] };
+    this.state = { vacancies: [] };
   }
 
   componentDidMount() {
     axios
-      .get("http://localhost:5000/exercises/")
+      .get("http://localhost:5000/vacancies/")
       .then((response) => {
-        this.setState({ exercises: response.data });
+        this.setState({ vacancies: response.data });
       })
       .catch((error) => {
         console.log(error);
       });
   }
 
-  deleteExercise(id) {
-    axios.delete("http://localhost:5000/exercises/" + id).then((response) => {
+  deleteVacancy(id) {
+    axios.delete("http://localhost:5000/vacancies/" + id).then((response) => {
       console.log(response.data);
     });
 
     this.setState({
-      exercises: this.state.exercises.filter((el) => el._id !== id),
+      vacancies: this.state.vacancies.filter((el) => el._id !== id),
     });
   }
 
-  exerciseList() {
-    return this.state.exercises.map((currentexercise) => {
+  vacancyList() {
+    return this.state.vacancies.map((currentvacancy) => {
       return (
-        <Exercise
-          exercise={currentexercise}
-          deleteExercise={this.deleteExercise}
-          key={currentexercise._id}
+        <Vacancy
+          vacancy={currentvacancy}
+          deleteVacancy={this.deleteVacancy}
+          key={currentvacancy._id}
         />
       );
     });
@@ -70,7 +70,7 @@ export default class ExercisesList extends Component {
   render() {
     return (
       <div className="container">
-        <h3>Logged Exercises</h3>
+        <h3>Logged Vacancies</h3>
         <div className="table-responsive">
           <table className="table">
             <thead className="thead-light">
@@ -82,7 +82,7 @@ export default class ExercisesList extends Component {
                 <th>Actions</th>
               </tr>
             </thead>
-            <tbody>{this.exerciseList()}</tbody>
+            <tbody>{this.vacancyList()}</tbody>
           </table>
         </div>
       </div>
