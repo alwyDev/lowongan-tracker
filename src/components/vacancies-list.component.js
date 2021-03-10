@@ -24,8 +24,12 @@ const Vacancy = (props) => (
       <button
         className="btn btn-danger btn-sm"
         href="#"
+        // onClick={() => {
+        //   props.deleteVacancy(props.vacancy._id);
+        // }}
         onClick={() => {
-          props.deleteVacancy(props.vacancy._id);
+          if (window.confirm("Are you sure you wish to delete this item?"))
+            props.deleteVacancy(props.vacancy._id);
         }}
       >
         delete
