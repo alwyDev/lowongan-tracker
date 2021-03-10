@@ -4,10 +4,19 @@ import axios from "axios";
 
 const Vacancy = (props) => (
   <tr>
-    <td>{props.vacancy.username}</td>
-    <td>{props.vacancy.description}</td>
-    <td>{props.vacancy.duration}</td>
     <td>{props.vacancy.date.substring(0, 10)}</td>
+    <td>{props.vacancy.company}</td>
+    <td>{props.vacancy.location}</td>
+    <td>{props.vacancy.position}</td>
+    <td>{props.vacancy.medium}</td>
+    <td>{props.vacancy.cv}</td>
+    <td>{props.vacancy.stepname}</td>
+    <td>{props.vacancy.description}</td>
+    <td>{props.vacancy.process1}</td>
+    <td>{props.vacancy.process2}</td>
+    <td>{props.vacancy.process3}</td>
+    <td>{props.vacancy.process4}</td>
+    {/* <td>{props.vacancy.duration}</td> */}
     <td>
       <Link to={"/edit/" + props.vacancy._id}>
         <button className="btn btn-warning btn-sm">edit</button>
@@ -68,18 +77,32 @@ export default class VacanciesList extends Component {
   }
 
   render() {
+    const tableStyle = {
+      color: "white",
+      backgroundColor: "DodgerBlue",
+      fontFamily: "Arial",
+    };
+
     return (
       <div className="container">
         <h3>Logged Vacancies</h3>
         <div className="table-responsive">
-          <table className="table">
-            <thead className="thead-light">
+          <table className="table table-bordered table-hover table-sm">
+            <thead style={tableStyle}>
               <tr>
-                <th>Username</th>
-                <th>Description</th>
-                <th>Duration</th>
-                <th>Date</th>
-                <th>Actions</th>
+                <th>Tanggal Kirim</th>
+                <th>Nama Perusaahan</th>
+                <th>Lokasi</th>
+                <th>Posisi</th>
+                <th>Medium</th>
+                <th>Versi CV</th>
+                <th>Tahap Rekrutmen</th>
+                <th>Keterangan</th>
+                <th>Proses Pertama</th>
+                <th>Proses Kedua</th>
+                <th>Proses Ketiga</th>
+                <th>Proses Keempat</th>
+                <th>Action</th>
               </tr>
             </thead>
             <tbody>{this.vacancyList()}</tbody>

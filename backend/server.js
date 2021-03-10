@@ -18,10 +18,10 @@ connection.once("open", () => {
 });
 
 const vacanciesRouter = require("./routes/vacancies");
-const usersRouter = require("./routes/users");
+const stepsRouter = require("./routes/steps");
 
 app.use("/vacancies", vacanciesRouter);
-app.use("/users", usersRouter);
+app.use("/steps", stepsRouter);
 
 app.listen(port, () => {
   console.log(`Server is running on port: ${port}`);
